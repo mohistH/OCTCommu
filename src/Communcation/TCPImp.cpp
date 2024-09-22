@@ -141,7 +141,7 @@ namespace oct_commu
 	/// --------------------------------------------------------------------------------
 	/// @brief: TCPImp::setOnReadFunc
 	/// --------------------------------------------------------------------------------
-	int TCPImp::setOnReadFunc(OnRecvDataFunc cb)
+	int TCPImp::setOnReadFunc(OnNetLinkRecvDataFunc cb)
 	{
 		if (TT_CLIENT == tcp_type_)
 		{

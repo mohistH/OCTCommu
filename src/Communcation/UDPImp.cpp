@@ -291,7 +291,7 @@ namespace oct_commu
 	/// --------------------------------------------------------------------------------
 	/// @brief: UDPImp::setOnRead
 	/// --------------------------------------------------------------------------------
-	int UDPImp::setOnRead(OnRecvDataFunc cb)
+	int UDPImp::setOnRead(OnNetLinkRecvDataFunc cb)
 	{
 		if (nullptr == cb)
 		{
@@ -392,8 +392,7 @@ namespace oct_commu
 			}
 			else
 			{
-				m_recvDataFunc((unsigned char*)fb.data(), fb.length(), fb.targetIP(), fb.targetPort(), fb.family(), 
-								std::string{}, 0, 0, 0, 0, 0);
+				m_recvDataFunc((unsigned char*)fb.data(), fb.length(), fb.targetIP(), fb.targetPort(), fb.family());
 			}
 		}
 	}
@@ -410,8 +409,7 @@ namespace oct_commu
 		std::unique_lock<std::mutex> lock(m_recvDataFunxMtx);
 		if (m_recvDataFunc)
 		{
-			m_recvDataFunc((unsigned char*)rb.data(), rb.currentLen(), rb.targetIP(), rb.targetPort(), rb.family(),
-							std::string{}, 0, 0, 0, 0, 0);
+			m_recvDataFunc((unsigned char*)rb.data(), rb.currentLen(), rb.targetIP(), rb.targetPort(), rb.family());
 		}
 
 	}

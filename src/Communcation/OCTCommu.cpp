@@ -109,7 +109,7 @@ namespace oct_commu
 	/// --------------------------------------------------------------------------------
 	/// @brief: IUDP::setOnRead
 	/// --------------------------------------------------------------------------------
-	int IUDP::setOnReadFunc(OnRecvDataFunc cb)
+	int IUDP::setOnReadFunc(OnNetLinkRecvDataFunc cb)
 	{
 		if (d_ptr_)
 		{
@@ -249,7 +249,7 @@ namespace oct_commu
 	/// --------------------------------------------------------------------------------
 	/// @brief: ITCP::setOnReadFunc
 	/// --------------------------------------------------------------------------------
-	int ITCP::setOnReadFunc(OnRecvDataFunc cb)
+	int ITCP::setOnReadFunc(OnNetLinkRecvDataFunc cb)
 	{
 		if (d_ptr_)
 		{
@@ -419,7 +419,7 @@ namespace oct_commu
 	/// --------------------------------------------------------------------------------
 	/// @brief: ISP::setOnReadFunc
 	/// --------------------------------------------------------------------------------
-	int ISP::setOnReadFunc(OnRecvDataFunc cb)
+	int ISP::setOnReadFunc(OnSPLinkRecvDataFunc cb)
 	{
 		if (d_ptr_)
 		{

@@ -178,11 +178,11 @@ namespace oct_commu
 
 		/// -------------------------------------------------------------------------------
 		/// @brief:		指定接收数据函数
-		/// @param: 	OnRecvDataFunc cb - 回调函数,
+		/// @param: 	OnSPLinkRecvDataFunc cb - 回调函数,
 		///  @ret:		void
 		///				
 		/// -------------------------------------------------------------------------------
-		int setOnReadFunc(OnRecvDataFunc cb);
+		int setOnReadFunc(OnSPLinkRecvDataFunc cb);
 
 		/// -------------------------------------------------------------------------------
 		/// @brief:		设置下一次读取数据长度
@@ -283,7 +283,7 @@ namespace oct_commu
 		/// 接收函数
 		std::mutex			mtx_recv_func_;
 		/// 接收数据函数
-		OnRecvDataFunc		recv_func_ = nullptr;
+		OnSPLinkRecvDataFunc		recv_func_ = nullptr;
 		/// 错误信息
 		std::string			error_str_ = std::string("");
 		/// 初始化参数

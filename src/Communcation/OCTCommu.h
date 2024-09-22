@@ -58,16 +58,18 @@ namespace oct_commu
 	/// @param ip - 从哪个地址接收的数据（网络）
 	/// @param port - 从哪个端口接收的数据（网络）
 	/// @param family - 网络通信使用的地址族
+	/// @return int 
+	/// ----------------------------------------------------
+	using OnNetLinkRecvDataFunc = std::function<int(const unsigned char* data, size_t data_len, std::string ip, int port, int family)>;
+
+	/// 串口链路接收数据函数
 	/// @param spName - 串口号
 	/// @param baud - 波特率
 	/// @param parity - 校验
 	/// @param dataBit - 数据位
 	/// @param stopBit - 停止位
 	/// @param flowCtrl - 流控制
-	/// @return int 
-	/// ----------------------------------------------------
-	using OnRecvDataFunc = std::function<int(const unsigned char* data, size_t data_len, std::string ip, int port, int family, 
-											std::string spName, int baud, int parity, int dataBit, int stopBit, int flowCtrl)>;
+	using OnSPLinkRecvDataFunc = std::function<void(const unsigned char* pdata, const size_t dataLen, const std::string spName, const int baud, const int parity, const int dataBit, const int stopBit, const int flowctrl)>;
 
 	/// tcp connect触发的函数
 	using OnTCPConnectFunc = std::function<void(std::string& msg)>;
@@ -182,7 +184,7 @@ namespace oct_commu
 		/// --------------------------------------------------------------------------------
 		/// @brief: 设置接收函数
 		/// --------------------------------------------------------------------------------
-		int setOnReadFunc(OnRecvDataFunc cb);
+		int setOnReadFunc(OnNetLinkRecvDataFunc cb);
 
 	private:
 		void uninit();
@@ -274,7 +276,7 @@ namespace oct_commu
 		///  @ret:		void
 		///				
 		/// -------------------------------------------------------------------------------
-		int setOnReadFunc(OnRecvDataFunc cb);
+		int setOnReadFunc(OnNetLinkRecvDataFunc cb);
 
 		/// -------------------------------------------------------------------------------
 		/// @brief:		TCP错误事件处理
@@ -440,12 +442,12 @@ namespace oct_commu
 
 		/// -------------------------------------------------------------------------------
 		/// @brief:		指定接收数据函数
-		/// @param: 	OnRecvDataFunc cb - 回调函数,
+		/// @param: 	OnSPLinkRecvDataFunc cb - 回调函数,
 		///  @ret:		void
 		///				0 - 成功
 		///				!= 0 失败 			
 		/// -------------------------------------------------------------------------------
-		int setOnReadFunc(OnRecvDataFunc cb);
+		int setOnReadFunc(OnSPLinkRecvDataFunc cb);
 
 		/// -------------------------------------------------------------------------------
 		/// @brief:		设置下一次读取数据长度

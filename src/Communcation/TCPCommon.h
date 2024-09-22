@@ -30,7 +30,7 @@ namespace oct_commu
 		///  @ret:		void
 		///				
 		/// -------------------------------------------------------------------------------
-		int setOnReadFunc(OnRecvDataFunc cb);
+		int setOnReadFunc(OnNetLinkRecvDataFunc cb);
 
 		/// -------------------------------------------------------------------------------
 		/// @brief:		连接事件处理函数
@@ -63,7 +63,7 @@ namespace oct_commu
 		std::mutex			mtx_recv_data_func_;
 
 		/// 接收数据
-		OnRecvDataFunc		on_recv_data_func_ = nullptr;
+		OnNetLinkRecvDataFunc		on_recv_data_func_ = nullptr;
 		
 		std::mutex			mtx_connect_func_;
 		/// tcp连接

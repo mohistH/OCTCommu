@@ -164,14 +164,17 @@ endif()
         set(PROJECT_NAME ${PROJECT_NAME}64)
     endif()
 
+    # 设置CMake生成动态库时导出所有符号
+    # set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS TRUE)
+
     add_library(${PROJECT_NAME} SHARED ${lib_inc_files} ${lib_src_files} )
 
-    if(MSVC)
-        target_compile_options( ${PROJECT_NAME} 
-        PRIVATE /GS
-        PRIVATE /source-charset:utf-8 /execution-charset:gb2312 
-        )
-    endif()
+    # if(MSVC)
+    #     target_compile_options( ${PROJECT_NAME} 
+    #     PRIVATE /GS
+    #     PRIVATE /source-charset:utf-8 /execution-charset:gb2312 
+    #     )
+    # endif()
 
     target_include_directories(${PROJECT_NAME}
         PRIVATE ${src_root} 
@@ -204,6 +207,7 @@ elseif (UNIX)
 endif()
 
 
+# 避免生成.exp文件
 
 
 # 引用头文件路径

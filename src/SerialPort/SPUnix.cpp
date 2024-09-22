@@ -235,7 +235,7 @@ namespace oct_commu
 	/// --------------------------------------------------------------------------------
 	/// @brief: 
 	/// --------------------------------------------------------------------------------
-	int SPUnix::setOnReadFunc(OnRecvDataFunc cb)
+	int SPUnix::setOnReadFunc(OnSPLinkRecvDataFunc cb)
 	{
 		 std::unique_lock<std::mutex> lock(mtx_recv_func_);
 		recv_func_ = std::move(cb);
@@ -736,7 +736,8 @@ namespace oct_commu
 				std::unique_lock<std::mutex> lock(mtx_recv_func_);
 				if (recv_func_)
 				{
-					recv_func_(read_data, next_read_len, "", 0, 0);
+					recv_func_(read_data, (size_t)next_read_len,
+						sp_init_.name_, sp_init_.baud_, sp_init_.parity_, sp_init_.data_bits_, sp_init_.stop_bits_, sp_init_.flow_ctrl_);
 				}
 			}
 			/// 用完后，移动当前指针

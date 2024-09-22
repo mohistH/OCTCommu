@@ -142,8 +142,7 @@ namespace oct_commu
 			}
 			else
 			{
-				on_recv_data_func_((unsigned char*)fb.data(), fb.length(), fb.targetIP(), fb.targetPort(), fb.family(),
-									std::string{}, 0, 0, 0, 0, 0);
+				on_recv_data_func_((unsigned char*)fb.data(), fb.length(), fb.targetIP(), fb.targetPort(), fb.family());
 			}		
 		}
 	}

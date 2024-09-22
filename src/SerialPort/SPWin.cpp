@@ -185,7 +185,7 @@ namespace oct_commu
 	/// --------------------------------------------------------------------------------
 	/// @brief: 
 	/// --------------------------------------------------------------------------------
-	int SPWin::setOnReadFunc(OnRecvDataFunc cb)
+	int SPWin::setOnReadFunc(OnSPLinkRecvDataFunc cb)
 	{
 		std::unique_lock<std::mutex> lock(mutex_recv_func_);
 		recv_func_ = std::move(cb);
@@ -320,7 +320,7 @@ namespace oct_commu
 						std::unique_lock<std::mutex> lock(mutex_recv_func_);
 						if (recv_func_)
 						{
-							recv_func_((const unsigned char*)recv_data_buffer.data(), (size_t)next_read_len_, "", 0, 0, 
+							recv_func_((const unsigned char*)recv_data_buffer.data(), (size_t)next_read_len_,
 									sp_init_.name_, sp_init_.baud_, sp_init_.parity_, sp_init_.data_bits_, sp_init_.stop_bits_, sp_init_.flow_ctrl_);
 							recv_data_buffer.reset();
 						}
@@ -339,7 +339,7 @@ namespace oct_commu
 					std::unique_lock<std::mutex> lock(mutex_recv_func_);
 					if (recv_func_)
 					{
-						recv_func_((const unsigned char*)recv_data_buffer.data(), (size_t)next_read_len_, "", 0, 0,
+						recv_func_((const unsigned char*)recv_data_buffer.data(), (size_t)next_read_len_,
 						sp_init_.name_, sp_init_.baud_, sp_init_.parity_, sp_init_.data_bits_, sp_init_.stop_bits_, sp_init_.flow_ctrl_);
 						recv_data_buffer.reset();
 					}

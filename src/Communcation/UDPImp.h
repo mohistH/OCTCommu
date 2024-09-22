@@ -102,7 +102,7 @@ namespace oct_commu
 		/// --------------------------------------------------------------------------------
 		int sendSpeed();
 
-		int setOnRead(OnRecvDataFunc cb);
+		int setOnRead(OnNetLinkRecvDataFunc cb);
 
 	private:
 		/// -------------------------------------------------------------------------------
@@ -181,7 +181,7 @@ namespace oct_commu
 
 		/// 接收数据回调函数
 		std::mutex				m_recvDataFunxMtx;
-		OnRecvDataFunc			m_recvDataFunc = nullptr;
+		OnNetLinkRecvDataFunc			m_recvDataFunc = nullptr;
 		/// 数据接收缓存
 		BlockingQueue<RecvBuf, 128>		block_queue_recv_buf_;
 

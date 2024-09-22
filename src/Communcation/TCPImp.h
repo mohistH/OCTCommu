@@ -58,7 +58,7 @@ namespace oct_commu
 		///  @ret:		void
 		///				
 		/// -------------------------------------------------------------------------------
-		int setOnReadFunc(OnRecvDataFunc cb);
+		int setOnReadFunc(OnNetLinkRecvDataFunc cb);
 
 		/// -------------------------------------------------------------------------------
 		/// @brief:		连接事件处理函数

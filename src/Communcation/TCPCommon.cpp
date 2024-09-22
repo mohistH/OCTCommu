@@ -22,7 +22,7 @@ namespace oct_commu
 	/// --------------------------------------------------------------------------------
 	/// @brief: TCPCommon::setOnReadFunc
 	/// --------------------------------------------------------------------------------
-	int TCPCommon::setOnReadFunc(OnRecvDataFunc cb)
+	int TCPCommon::setOnReadFunc(OnNetLinkRecvDataFunc cb)
 	{
 		std::unique_lock<std::mutex> lock(mtx_recv_data_func_);
 		on_recv_data_func_ = std::move(cb);
@@ -74,8 +74,7 @@ namespace oct_commu
 				return;
 			}
 			on_recv_data_func_((const unsigned char*)rb.data(), (size_t)rb.currentLen(), 
-			rb.targetIP(), rb.targetPort(), rb.family(), 
-			std::string{}, 0, 0, 0, 0, 0);
+			rb.targetIP(), rb.targetPort(), rb.family());
 		
 		}
 	}
