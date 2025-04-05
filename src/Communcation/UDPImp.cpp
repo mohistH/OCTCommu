@@ -335,7 +335,7 @@ namespace oct_commu
 					return retValue;
 				}
 
-				retValue = pscok->joinMultiAddr(param.target_ip_.c_str(), param.local_ip_.c_str());
+				retValue = pscok->joinMultiAddr(m_isIPV6, param.target_ip_.c_str(), param.local_ip_.c_str());
 				if (0 != retValue)
 				{
 					setErrorMsg("faild to joinMultiAddr, please check the local ip and target ip");

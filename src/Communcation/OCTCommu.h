@@ -101,7 +101,7 @@ namespace oct_commu
 	/// ----------------------------------------------------------------------------
 	/// @brief: UDP类型
 	/// ----------------------------------------------------------------------------
-	enum CAST_TYPE
+	enum CAST_TYPE : int
 	{
 		/// 单播
 		CT_UNI = 1,
@@ -193,7 +193,7 @@ namespace oct_commu
 		UDPImp*		d_ptr_ = nullptr;
 	};
 
-	enum TCP_TYPE
+	enum TCP_TYPE : int
 	{
 		/// 服务端
 		TT_SERVER = 1,
@@ -316,7 +316,7 @@ namespace oct_commu
 	/// ----------------------------------------------------------------------------------------
 	/// @brief: 校验
 	/// ----------------------------------------------------------------------------------------
-	enum SP_Parity
+	enum SP_Parity : int 
 	{
 		SPP_None	= 0,  ///< No Parity 无校验
 		SPP_Odd		= 1,  ///< Odd Parity 奇校验
@@ -325,7 +325,7 @@ namespace oct_commu
 		SPP_Space	= 4,  ///< Space Parity 0校验
 	};
 
-	enum SP_DataBits
+	enum SP_DataBits : int 
 	{
 		SPDB_5 = 5, ///< 5 data bits 5位数据位
 		SPDB_6 = 6, ///< 6 data bits 6位数据位
@@ -334,14 +334,14 @@ namespace oct_commu
 	};
 
 
-	enum SP_StopBits
+	enum SP_StopBits : int 
 	{
 		SPSB_One = 0,        ///< 1 stop bit 1位停止位
 		SPSB_OneAndHalf = 1, ///< 1.5 stop bit 1.5位停止位 - This is only for the Windows platform
 		SPSB_Two = 2         ///< 2 stop bit 2位停止位
 	};
 
-	enum SP_FlowControl
+	enum SP_FlowControl : int 
 	{
 		SPFC_None = 0,     ///< No flow control 无流控制
 		SPFC_Hardware = 1, ///< Hardware(RTS / CTS) flow control 硬件流控制
@@ -495,4 +495,4 @@ namespace oct_commu
 
 }
 
-#endif /// OCT_COMMU_H_
+#endif
