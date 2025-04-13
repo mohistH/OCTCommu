@@ -65,7 +65,7 @@ namespace oct_commu
 		}
 
 		/// 调用接口发送数据
-		const int64_t&& ret = m_pUDP.get()->send(pdata, len, m_pSendAddr, m_sockAddrLen);
+		const int64_t ret = m_pUDP.get()->send(pdata, len, m_pSendAddr, m_sockAddrLen);
 
 		if (-1 == ret)
 		{
@@ -78,7 +78,7 @@ namespace oct_commu
 			return -5;
 		}
 
-		return 0;
+		return ret;
 	}
 
 	/// --------------------------------------------------------------------------------
